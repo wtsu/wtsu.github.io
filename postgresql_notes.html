@@ -1,65 +1,89 @@
 <html>
-<body>
-#postgresql notes
-#reference:
-https://www.cherryservers.com/blog/how-to-install-and-setup-postgresql-server-on-ubuntu-20-04
-https://www.enterprisedb.com/postgres-tutorials/connecting-postgresql-using-psql-and-pgadmin
-https://www.commandprompt.com/education/how-to-start-or-stop-postgresql-server-on-ubuntu/
+	<body>
+		<p>
+		resources: <br>
+			https://www.cherryservers.com/blog/how-to-install-and-setup-postgresql-server-on-ubuntu-20-04 <br>
+			https://www.enterprisedb.com/postgres-tutorials/connecting-postgresql-using-psql-and-pgadmin <br>
+			https://www.commandprompt.com/education/how-to-start-or-stop-postgresql-server-on-ubuntu/ <br>
+		</p>
+		<p>
+			1. check if postgresql daemon is active <br>
+			service postgresql status
+		</p>
 
-1. check if postgresql daemon is active
-service postgresql status
+		<p>
+			2. use postgresql cli <br>
+			sudo -u postgres psql
+		</p>
 
-2. use postgresql cli
-sudo -u postgres psql
+		<p>
+			3. check postgresql connection info <br>
+			\l
+		</p>
 
-3. check postgresql connection info
-\l
+		<p>
+			4. list of all users with priviledges <br>
+			\du
+		</p>
 
-4. list of all users with priviledges
-\du
-
-5. set password to default postgres user. For local testing, setting pw to password
-\password postgres
-
-6. create a test database
-CREATE DATABASE test_db;
-
-7. connect to the test_db database
-\c test_db
-
-8. quit psql
-\q
+		<p>
+			5. set password to default postgres user. For local testing, setting pw to password <br>
+			\password postgres
+		</p>
 
 
-9. Explore postgres server with pg admin
-#based on prior steps, these are the following
-#server = localhost
-#database = postgres
-#port = 5432
-#username = postgres 
-#password = password
+		<p>
+			6. create a test database <br>
+			CREATE DATABASE test_db;		
+		</p>
 
-#in pgadmin
+		<p>
+			7. connect to the test_db database <br>
+			\c test_db
+		</p>
 
-1. create server
-	under general
-		name = localhost
+	
 
-	under connection
-		host = localhost
-		port = 5432
-		maintenance database = postgres
-		username = postgres
-		password = password
+		<p>
+			8. quit psql <br>
+			\q
+		</p>
 
-10. For future turning on and off the server
-#check status postgres
-sudo systemctl status postgresql
+	
+		<p>
+			9. Explore postgres server with pg admin <br>
+			#based on prior steps, these are the following <br>
+			#server = localhost <br>
+			#database = postgres <br>
+			#port = 5432 <br>
+			#username = postgres <br>
+			#password = password <br>
+			<br>
+			#in pgadmin <br>
+			<br>
+			1. create server <br>
+			under general <br>
+			name = localhost<br>
+			<br>
+			under connection <br>
+			host = localhost <br>
+			port = 5432 <br>
+			maintenance database = postgres <br>
+			username = postgres <br>
+			password = password <br>
+		</p>
 
-#start postgres server
-sudo systemctl start postgresql
+		<p>
+			10. For future turning on and off the server <br>
+			#check status postgres <br>
+			sudo systemctl status postgresql <br>
+			<br>
+			#start postgres server <br>
+			sudo systemctl start postgresql <br>
+			<br>
+			#stop postgres server <br>
+			sudo systemctl stop postgresql <br>
+		</p>
 
-#stop postgres server
-sudo systemctl stop postgresql
-</body>
+	</body>
 </html>
