@@ -1,3 +1,5 @@
+<html>
+<body>
 1. install meltano
 pip install meltano
 
@@ -28,3 +30,6 @@ default_target_schema => main
 
 9. run ETL 
 meltano run tap-csv target-duckdb
+
+</html>
+</body>
