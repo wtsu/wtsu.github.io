@@ -1,3 +1,5 @@
+<html>
+<body>
 install dbt notes
 
 1. Install a Database Engine like duckdb
@@ -17,4 +19,5 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
       type: duckdb
       path: /home/william/database/warehouse.duckdb
 """
-
+</body>
+</html>
