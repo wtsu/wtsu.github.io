@@ -12,50 +12,50 @@
 		</p>
 		
 		<p>
-			1. check if postgresql daemon is active <br>
+			2. check if postgresql daemon is active <br>
 			<code>service postgresql status</code>
 		</p>
 
 		<p>
-			2. use postgresql cli <br>
+			3. use postgresql cli <br>
 			<code>sudo -u postgres psql</code>
 		</p>
 
 		<p>
-			3. check postgresql connection info <br>
+			4. check postgresql connection info <br>
 			<code>\l</code>
 		</p>
 
 		<p>
-			4. list of all users with priviledges <br>
+			5. list of all users with priviledges <br>
 			<code>\du</code>
 		</p>
 
 		<p>
-			5. set password to default postgres user. For local testing, setting pw to password <br>
+			6. set password to default postgres user. For local testing, setting pw to password <br>
 			<code>\password postgres</code>
 		</p>
 
 
 		<p>
-			6. create a test database <br>
+			7. create a test database <br>
 			<code>CREATE DATABASE test_db;</code>	
 		</p>
 
 		<p>
-			7. connect to the test_db database <br>
+			8. connect to the test_db database <br>
 			<code>\c test_db</code>
 		</p>
 
 
 		<p>
-			8. quit psql <br>
+			9. quit psql <br>
 			<code>\q</code>
 		</p>
 
 	
 		<p>
-			9. Explore postgres server with pg admin 
+			10. Explore postgres server with pg admin 
 			<p style="margin-left: 40px">
 				<br>
 				Under general: <br>
@@ -71,7 +71,7 @@
 		</p>
 
 		<p>
-			10. For future turning on and off the server <br>
+			11. For future turning on and off the server <br>
 			check status postgres <br>
 			<code>sudo systemctl status postgresql</code><br>
 			<br>
