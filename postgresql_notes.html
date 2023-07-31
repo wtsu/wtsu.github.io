@@ -8,45 +8,45 @@
 		</p>
 		<p>
 			1. check if postgresql daemon is active <br>
-			service postgresql status
+			<code>service postgresql status</code>
 		</p>
 
 		<p>
 			2. use postgresql cli <br>
-			sudo -u postgres psql
+			<code>sudo -u postgres psql</code>
 		</p>
 
 		<p>
 			3. check postgresql connection info <br>
-			\l
+			<code>\l</code>
 		</p>
 
 		<p>
 			4. list of all users with priviledges <br>
-			\du
+			<code>\du</code>
 		</p>
 
 		<p>
 			5. set password to default postgres user. For local testing, setting pw to password <br>
-			\password postgres
+			<code>\password postgres</code>
 		</p>
 
 
 		<p>
 			6. create a test database <br>
-			CREATE DATABASE test_db;		
+			<code>CREATE DATABASE test_db;</code>	
 		</p>
 
 		<p>
 			7. connect to the test_db database <br>
-			\c test_db
+			<code>\c test_db</code>
 		</p>
 
 	
 
 		<p>
 			8. quit psql <br>
-			\q
+			<code>\q</code>
 		</p>
 
 	
@@ -76,13 +76,13 @@
 		<p>
 			10. For future turning on and off the server <br>
 			#check status postgres <br>
-			sudo systemctl status postgresql <br>
+			<code>sudo systemctl status postgresql</code>
 			<br>
 			#start postgres server <br>
-			sudo systemctl start postgresql <br>
+			<code>sudo systemctl start postgresql</code>
 			<br>
 			#stop postgres server <br>
-			sudo systemctl stop postgresql <br>
+			<code>sudo systemctl stop postgresql</code>
 		</p>
 
 	</body>
