@@ -1,0 +1,61 @@
+#postgresql notes
+#reference:
+https://www.cherryservers.com/blog/how-to-install-and-setup-postgresql-server-on-ubuntu-20-04
+https://www.enterprisedb.com/postgres-tutorials/connecting-postgresql-using-psql-and-pgadmin
+https://www.commandprompt.com/education/how-to-start-or-stop-postgresql-server-on-ubuntu/
+
+1. check if postgresql daemon is active
+service postgresql status
+
+2. use postgresql cli
+sudo -u postgres psql
+
+3. check postgresql connection info
+\l
+
+4. list of all users with priviledges
+\du
+
+5. set password to default postgres user. For local testing, setting pw to password
+\password postgres
+
+6. create a test database
+CREATE DATABASE test_db;
+
+7. connect to the test_db database
+\c test_db
+
+8. quit psql
+\q
+
+
+9. Explore postgres server with pg admin
+#based on prior steps, these are the following
+#server = localhost
+#database = postgres
+#port = 5432
+#username = postgres 
+#password = password
+
+#in pgadmin
+
+1. create server
+	under general
+		name = localhost
+
+	under connection
+		host = localhost
+		port = 5432
+		maintenance database = postgres
+		username = postgres
+		password = password
+
+10. For future turning on and off the server
+#check status postgres
+sudo systemctl status postgresql
+
+#start postgres server
+sudo systemctl start postgresql
+
+#stop postgres server
+sudo systemctl stop postgresql

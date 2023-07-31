@@ -1,0 +1,30 @@
+1. install meltano
+pip install meltano
+
+2. create meltano project
+meltano init my-meltano-project
+
+3. install extractor 
+meltano add extractor tap-csv --variant=meltanolabs
+
+4. configure extractor
+meltano config tap-csv set --interactive
+files => [{"entity":"values","path":"/home/william/Desktop/values.csv", "keys":["id"]}]
+
+5. install jsonl loader
+meltano add loader target-jsonl --variant=andyh1203
+
+6. test meltano etl
+meltano run tap-csv target-jsonl
+
+7. install loader
+meltano add loader target-duckdb
+
+8. configure loader
+meltano config target-duckdb set --interactive
+
+filepath => /home/william/duckdb/warehouse.duckdb
+default_target_schema => main
+
+9. run ETL 
+meltano run tap-csv target-duckdb

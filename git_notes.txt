@@ -1,0 +1,31 @@
+source: https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
+
+1. initialize git 
+git init
+
+2. syncronise local folder with server
+git remote add origin https://github.com/wtsu/notes.git
+
+3. push local folder to server
+git pull origin main
+
+4. create branch 
+git branch notes
+
+5. checkout branch 
+git checkout notes
+
+6. See if any files need staging
+git status
+
+7. add file to staging 
+git add git_notes.txt
+
+8. if you want to add all files to staging
+git add --all
+
+9. commit changes
+git commit -m 'seeding git notes'
+
+10. push to server
+git push origin notes

@@ -1,0 +1,20 @@
+install dbt notes
+
+1. Install a Database Engine like duckdb
+pip install dbt-duckdb
+
+2. Seed dbt project
+dbt init jaffle_shop
+
+3.create profiles.yml
+
+for duckdb, the profiles.yml would look like 
+"""
+jaffle_shop: # this needs to match the profile in your dbt_project.yml file
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /home/william/database/warehouse.duckdb
+"""
+
