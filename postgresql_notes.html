@@ -1,95 +1,68 @@
 <html>
-	<body>
-		<p>
-		resources: <br>
-			https://www.cherryservers.com/blog/how-to-install-and-setup-postgresql-server-on-ubuntu-20-04 <br>
-			https://www.enterprisedb.com/postgres-tutorials/connecting-postgresql-using-psql-and-pgadmin <br>
-			https://www.commandprompt.com/education/how-to-start-or-stop-postgresql-server-on-ubuntu/ <br>
-		</p>
-		<p>
-			1. install postgres<br>
-			<code>apt install postgresql postgresql-contrib</code>
-		</p>
-		
-		<p>
-			2. check if postgresql daemon is active <br>
-			<code>service postgresql status</code>
-		</p>
+<body>
+</pre>		
+resources: 
+https://www.cherryservers.com/blog/how-to-install-and-setup-postgresql-server-on-ubuntu-20-04 
+https://www.enterprisedb.com/postgres-tutorials/connecting-postgresql-using-psql-and-pgadmin 
+https://www.commandprompt.com/education/how-to-start-or-stop-postgresql-server-on-ubuntu/ 
 
-		<p>
-			3. use postgresql cli <br>
-			<code>sudo -u postgres psql</code>
-		</p>
+1. install postgres
+apt install postgresql postgresql-contrib
 
-		<p>
-			4. check postgresql connection info <br>
-			<code>\l</code>
-		</p>
+2. check if postgresql daemon is active 
+service postgresql status
 
-		<p>
-			5. list of all users with privileges <br>
-			<code>\du</code>
-		</p>
+3. use postgresql cli 
+sudo -u postgres psql
 
-		<p>
-			6. set password to default postgres user. For local testing, setting pw to password <br>
-			<code>\password postgres</code>
-		</p>
+4. check postgresql connection info 
+\l
 
+5. list of all users with privileges 
+\du
 
-		<p>
-			7. create a test database <br>
-			<code>CREATE DATABASE test_db;</code>	
-		</p>
+6. set password to default postgres user. For local testing, setting pw to password 
+\password postgres
 
-		<p>
-			8. connect to the test_db database <br>
-			<code>\c test_db</code>
-		</p>
+7. create a test database 
+CREATE DATABASE test_db;	
 
+8. connect to the test_db database 
+\c test_db
 
-		<p>
-			9. quit psql <br>
-			<code>\q</code>
-		</p>
+9. quit psql 
+\q
 
+10. Explore postgres server with pg admin 
+
+	1. Install the public key for the repository (if not done previously):
+	curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
 	
-		<p>
-			10. Explore postgres server with pg admin 
-			<p style="margin-left: 40px">
+	2.Create the repository configuration file:
+	sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+	
+	3. Install for both desktop and web modes:
+	sudo apt install pgadmin4
+	
+	Under general: 
+	name = localhost
+	
+	Under connection: 
+	host = localhost 
+	port = 5432 
+	maintenance database = postgres 
+	username = postgres 
+	password = password 
 
-				1. Install the public key for the repository (if not done previously):<br>
-				<code>curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg</code><br>
-				<br>
-				2.Create the repository configuration file:
-				<code>sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'</code><br>
-				<br>
-				3. Install for both desktop and web modes:<br>
-				<code>sudo apt install pgadmin4</code><br>
-				<br>
-				Under general: <br>
-				name = localhost<br>
-				<br>
-				Under connection: <br>
-				host = localhost <br>
-				port = 5432 <br>
-				maintenance database = postgres <br>
-				username = postgres <br>
-				password = password <br>
-			</p>
-		</p>
+11. For future turning on and off the server 
+check status postgres 
+sudo systemctl status postgresql
 
-		<p>
-			11. For future turning on and off the server <br>
-			check status postgres <br>
-			<code>sudo systemctl status postgresql</code><br>
-			<br>
-			start postgres server <br>
-			<code>sudo systemctl start postgresql</code><br>
-			<br>
-			stop postgres server <br>
-			<code>sudo systemctl stop postgresql</code><br>
-		</p>
+start postgres server 
+sudo systemctl start postgresql
 
-	</body>
+stop postgres server 
+sudo systemctl stop postgresql
+</pre>		
+</body>
 </html>
