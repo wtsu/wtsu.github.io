@@ -1,0 +1,111 @@
+<html>
+<body>
+<pre>
+1. Install packages needed to create template
+ 
+pip install cookiecutter
+pip install poetry
+
+
+2. Create Tap boiler plate
+
+cookiecutter https://github.com/meltano/sdk --directory="cookiecutter/tap-template"
+
+
+3. Change into the folder with the custom tap. Initialize Poetry
+
+cd tap-rickandmorty
+poetry config virtualenvs.in-project true
+poetry install
+
+
+4.Search in the todos and configure
+Starting with client.py
+
+#update url_base
+    def url_base(self) -> str:
+        """Return the API URL root, configurable via tap settings."""
+        # TODO: hardcode a value here, or retrieve it from self.config
+       return "https://rickandmortyapi.com/api"
+
+#update records_jsonpath per expected api response
+    records_jsonpath = "$.results[*]"
+
+
+tap.py
+
+#simplify config_jsonschema
+    config_jsonschema = th.PropertiesList(
+        th.Property(
+            "start_date",
+            th.DateTimeType,
+            description="The earliest record date to sync",
+        )
+    ).to_dict()
+
+#modify streams
+        return [
+            streams.CharactersStream(self)
+        ]
+
+
+streams.py
+
+#configure stream
+class CharactersStream(RickAndMortyStream):
+    """Define custom stream."""
+
+    name = "characters"
+    path = "/character"
+    primary_keys = ["id"]
+    replication_key = None
+    schema = th.PropertiesList(
+        th.Property(
+            "id",
+            th.IntegerType,
+            description="The character's ID",
+        ),
+        th.Property(
+            "name",
+            th.StringType,
+            description="The character's status",
+        ),
+        th.Property(
+            "status",
+            th.StringType,
+            description="The character's name",
+        )
+    ).to_dict()
+
+5. How to configure pagination
+A. In client.py, set up a MyPaginator Class. this gets used in a method within the RickAndMortyStream Class
+
+class MyPaginator(BaseHATEOASPaginator):
+    def get_next_url(self, response):
+        data = response.json()
+        return data.get('info').get("next")
+
+B. Within the RickAndMortyStream Class, add a method to create an instance of MyPaginator. Also add a method to apply pagination in the url parameter creation
+
+class RickAndMortyStream(RESTStream):
+    """RickAndMorty stream class."""
+    def get_new_paginator(self):
+        return MyPaginator()
+
+    def get_url_params(self, context, next_page_token):
+        params = {}
+
+        # Next page token is a URL, so we can to parse it to extract the query string
+        if next_page_token:
+            params.update(parse_qsl(next_page_token.query))
+
+        return params
+
+6. Run tap and see if it works
+
+poetry run pytest
+poetry run tap-rickandmorty > out.jsonl
+
+</pre>
+</body>
+</html>
