@@ -2,35 +2,47 @@
 <body>
 <pre>
 source: https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
+1. install git
+source: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-20-04
+sudo apt install git
 
-1. initialize git 
+2. install git cli
+source: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
+type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+&& sudo apt update \
+&& sudo apt install gh -y
+  
+3. initialize git 
 git init
 
-2. syncronise local folder with server
+4. syncronise local folder with server
 git remote add origin https://github.com/wtsu/wtsu.github.io.git
 
-3. push local folder to server
+5. push local folder to server
 git pull origin main
 
-4. create branch 
+6. create branch 
 git branch notes
 
-5. checkout branch 
+7. checkout branch 
 git checkout notes
 
-6. See if any files need staging
+8. See if any files need staging
 git status
 
-7. add file to staging 
+9. add file to staging 
 git add git_notes.txt
 
-8. if you want to add all files to staging
+10. if you want to add all files to staging
 git add --all
 
-9. commit changes
+11. commit changes
 git commit -m 'seeding git notes'
 
-10. push to server
+12. push to server
 git push origin notes
 </pre>
 </body>
