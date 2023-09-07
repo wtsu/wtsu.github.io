@@ -1,42 +1,46 @@
 <html>
 <body>
 <pre>
+source: source: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
 source: https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
-1. install git
 source: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-20-04
+
+1. install git
 sudo apt install git
 
 2. install git cli
-source: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
 type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
 && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
 && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
 && sudo apt update \
 && sudo apt install gh -y
+
+3. authenticate to github
+gh auth login
   
-3. initialize git 
+4. initialize git 
 git init
 
-4. syncronise local folder with server
+5. syncronise local folder with server
 git remote add origin https://github.com/wtsu/wtsu.github.io.git
 
-5. push local folder to server
+6. push local folder to server
 git pull origin main
 
-6. create branch 
+7. create branch 
 git branch notes
 
-7. checkout branch 
+8. checkout branch 
 git checkout notes
 
-8. See if any files need staging
+9. See if any files need staging
 git status
 
-9. add file to staging 
+10. add file to staging 
 git add git_notes.txt
 
-10. if you want to add all files to staging
+11. if you want to add all files to staging
 git add --all
 
 11. commit changes
