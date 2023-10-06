@@ -1,0 +1,35 @@
+<html>
+source: https://docs.conda.io/projects/miniconda/en/latest/
+<body>
+<pre>
+
+1. make miniconda folder
+mkdir -p ~/miniconda3
+
+2. downloand miniconda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+
+3. install miniconda
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+
+4. initialize bash
+~/miniconda3/bin/conda init bash
+
+5. confirm conda installation
+conda --version
+
+6. create conda virtualenv
+conda create --name myenv python=3.9
+
+7. activate conda virtualenv 
+conda activate myenv
+
+8. delete conda virtualenv
+go to ~/miniconda3/envs and delete myenv
+
+9. remove miniconda
+rm -rf ~/miniconda3/miniconda.sh
+
+</body>
+</pre>
+</html>
