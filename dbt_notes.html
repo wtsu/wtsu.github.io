@@ -9,7 +9,24 @@ pip install dbt-duckdb
 2. Seed dbt project
 dbt init jaffle_shop
 
-3.create profiles.yml
+3.create an environment variable you can inject into dbt_project.yml
+export DUCKDB_PATH="your_file_path"
+
+4. confirm enviroment variable exists
+echo $DUCKDB_PATH
+
+5. create .gitignore file to prevent uploading uneeded files
+"""
+target/
+dbt_modules/
+logs/
+.DS_Store
+dbt_packages/
+file.db
+.user.yml
+"""
+
+6. create profiles.yml
 
 for duckdb, the profiles.yml would look like 
 """
@@ -18,7 +35,7 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
   outputs:
     dev:
       type: duckdb
-      path: /home/william/database/warehouse.duckdb
+      path: "{{ env_var('DUCKDB_PATH') }}"
 """
 </pre>
 </body>
